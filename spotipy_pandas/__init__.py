@@ -1,1 +1,1 @@
-from .spotipy_pandas import *
+from .spotipy_pandas import * # noqa
