@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='spotipy-pandas',
     version='0.1',
-    description='A package for working with Spotify data in Pandas',
+    description='A Spotipy-based Pandas wrapper for Spotify API calls',
     url='https://github.com/opbenesh/spotipy-pandas',
     author='Ben Esh',
     classifiers=[
