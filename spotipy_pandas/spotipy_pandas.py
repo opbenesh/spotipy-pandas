@@ -99,3 +99,29 @@ def truncate_playlist(sp, playlist_id):
 def overwrite_playlist(sp, playlist_id, tracks):
     truncate_playlist(sp, playlist_id)
     add_tracks_to_playlist(sp, playlist_id, tracks)
+
+
+def get_saved_tracks(sp):
+    playlist_tracks = flatten_spotify_iterator(sp, sp.current_user_saved_tracks())
+    tracks = [playlist_track["track"] for playlist_track in playlist_tracks]
+    if not tracks:
+        return None
+    return track_api_output_to_dataframe(tracks)
+
+
+def save_tracks_to_library(sp, tracks):
+    track_ids = list(tracks["id"])
+    iterative_batch_action(
+        sp,
+        batch_action=lambda batch: sp.current_user_saved_tracks_add(batch),
+        items=track_ids,
+    )
+
+
+def remove_tracks_from_library(sp, tracks):
+    track_ids = list(tracks["id"])
+    iterative_batch_action(
+        sp,
+        batch_action=lambda batch: sp.current_user_saved_tracks_delete(batch),
+        items=track_ids,
+    )
