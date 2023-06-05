@@ -6,7 +6,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name="spotipy-pandas",
-    version="0.2.0",
+    version="0.2.1",
     description="A Spotipy-based Pandas wrapper for Spotify API calls",
     url="https://github.com/opbenesh/spotipy-pandas",
     author="Ben Esh",

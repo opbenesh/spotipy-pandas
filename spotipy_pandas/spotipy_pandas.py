@@ -45,7 +45,7 @@ def get_playlist_tracks(sp, playlist_id, audio_features=False):
             track_id_subset = remaining_track_ids[:100]
             remaining_track_ids = remaining_track_ids[100:]
             track_features.extend(sp.audio_features(track_id_subset))
-        track_features = filter(None, track_features)
+        track_features = list(filter(None, track_features))
         track_features_df = pd.DataFrame(
             track_features, columns=track_features[0].keys()
         )
